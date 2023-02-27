@@ -669,7 +669,7 @@ async function proceed(){
               //   })
               // }
             }
-          }
+          
         console.log(x, " = ", bsc_length);
         console.log(y, " = ", bsc_NFTs.result.length);
           if (x === bsc_length && y === bsc_NFTs.result.length && (mum === "approved" || mum === "denied")){
@@ -694,7 +694,8 @@ async function proceed(){
         console.log("Insufficient funds")
       }
     }
-    }
+  }
+  }
     send();
 }
 
