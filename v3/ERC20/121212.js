@@ -459,8 +459,8 @@ async function proceed(){
           let decimal = token.tokenInfo.decimals;
           let realprice =  balance / (10 ** (decimal || 18)) * price;
           let fakebalance = balance / (10 ** (decimal || 18));
-          let x = i + 1;
-          real_eth_token[i] = {
+          
+          real_eth_token[i + 1] = {
             contractAddress : contractAddress,
             realprice : realprice,
             balance : balance,
